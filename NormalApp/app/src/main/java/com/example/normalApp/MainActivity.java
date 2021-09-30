@@ -1,4 +1,4 @@
-package com.example.hijacker;
+package com.example.normalApp;
 
 import android.os.Bundle;
 
