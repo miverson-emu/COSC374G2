@@ -1,4 +1,7 @@
 package com.example.login_2;
+/*
+This is the new app...
+ */
 
 import android.os.Build;
 import android.os.Bundle;
