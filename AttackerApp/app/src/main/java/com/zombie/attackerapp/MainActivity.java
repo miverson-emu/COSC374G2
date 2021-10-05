@@ -1,18 +1,9 @@
 package com.zombie.attackerapp;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
-import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.EditText;
-import android.widget.TextView;
-
-import com.google.android.material.snackbar.Snackbar;
+import android.view.KeyEvent;
 
 public class MainActivity extends AppCompatActivity {
     @Override
@@ -26,5 +17,11 @@ public class MainActivity extends AppCompatActivity {
     public void onResume(){
         super.onResume();
         setContentView(R.layout.activity_main);
+    }
+
+    @Override
+    public boolean onKeyDown(int key, KeyEvent keyEvent){
+        System.out.println(keyEvent.getKeyCode());
+        return false;
     }
 }
