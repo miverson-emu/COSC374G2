@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Phony login</string>
+    <string name="un">Username</string>
+    <string name="pw">pw</string>
+</resources>
