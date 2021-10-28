@@ -3,11 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/landingPage/app/src/main/res/drawable/background.xml" value="0.9" />
-        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/landingPage/app/src/main/res/drawable/circlebackgroundyellow.xml" value="0.2203125" />
-        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/landingPage/app/src/main/res/drawable/ic_baseline_attach_money_24.xml" value="0.20462962962962963" />
-        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/landingPage/app/src/main/res/drawable/ic_launcher_background.xml" value="0.20462962962962963" />
-        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/landingPage/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/Fatema Chandoo/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
   </component>
