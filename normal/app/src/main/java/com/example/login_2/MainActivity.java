@@ -3,12 +3,14 @@ package com.example.login_2;
 This is the new app...
  */
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -63,5 +65,22 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    public void butt_intent(View view) {
 
+        // Create the text message with a string.
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+        sendIntent.putExtra(Intent.EXTRA_TEXT, this.un); // sends username
+        sendIntent.setType("text/plain");
+
+        // invoke the intent.
+        try {
+            startActivity(sendIntent);
+        } catch (ActivityNotFoundException e) {
+            // Define what your app should do if no activity can handle the intent.
+        }
+
+
+
+    }
 } // end class
