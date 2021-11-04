@@ -9,9 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Login_2">
+<<<<<<< HEAD:normal/app/src/main/AndroidManifest.xml
         <activity
             android:name=".TestActivity"
             android:exported="false" />
+=======
+>>>>>>> login:normal/app/src/main/AndroidManifest.xml
         <activity
             android:name=".MainActivity"
             android:exported="true">
