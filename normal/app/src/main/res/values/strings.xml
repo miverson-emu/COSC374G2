@@ -1,12 +1,5 @@
 <resources>
-<<<<<<< HEAD
-    <string name="app_name">Phony login</string>
-    <string name="un">Username</string>
-    <string name="pw">pw</string>
-    <string name="textview1">This is a testing page for navigation to use!</string>
-=======
     <string name="app_name">Legitimate App</string>
     <string name="un">Username</string>
     <string name="pw">pw</string>
->>>>>>> login
 </resources>

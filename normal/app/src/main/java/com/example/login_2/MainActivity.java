@@ -1,27 +1,17 @@
 package com.example.login_2;
-<<<<<<< HEAD
 
-=======
 /*
 This is the new app...
  */
 
 import android.content.ActivityNotFoundException;
->>>>>>> login
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-<<<<<<< HEAD
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-=======
 import android.widget.EditText;
 import android.widget.TextView;
 
->>>>>>> login
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,15 +26,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-<<<<<<< HEAD
-
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(v -> {
-            Intent intent = new Intent(this, TestActivity.class);
-            startActivity(intent);
-        });
-=======
->>>>>>> login
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -84,10 +65,6 @@ public class MainActivity extends AppCompatActivity {
     } // end submit_clicked
 
 
-
-<<<<<<< HEAD
-
-=======
     public void butt_intent(View view) {
 
         // Create the text message with a string.
@@ -102,9 +79,5 @@ public class MainActivity extends AppCompatActivity {
         } catch (ActivityNotFoundException e) {
             // Define what your app should do if no activity can handle the intent.
         }
-
-
-
     }
->>>>>>> login
 } // end class
