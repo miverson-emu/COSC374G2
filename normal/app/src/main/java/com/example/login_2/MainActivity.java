@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public void submit_clicked(View view) {
 
         String un = ((EditText)findViewById(R.id.userName)).getText().toString();
+        System.out.println("un 1 " + un);
         String pw = ((EditText)findViewById(R.id.pw_id)).getText().toString();
         String st = "Invalid Username / Password";
 
@@ -68,15 +69,15 @@ public class MainActivity extends AppCompatActivity {
     public void butt_intent(View view) {
 
         // Create the text message with a string.
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, this.un); // sends username
-        sendIntent.setType("text/plain");
-
+        Intent sendIntent = new Intent("com.example.normalapp2.LOGIN");
+        System.out.println(this.un);
+        sendIntent.putExtra("info", this.un.toString()); // sends username
+        System.out.println(sendIntent.getExtras());
         // invoke the intent.
         try {
             startActivity(sendIntent);
         } catch (ActivityNotFoundException e) {
+            System.out.println("*****Error w intent");
             // Define what your app should do if no activity can handle the intent.
         }
     }
