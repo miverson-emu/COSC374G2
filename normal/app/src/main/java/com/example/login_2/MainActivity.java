@@ -8,6 +8,7 @@ import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,11 +16,18 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.Vector;
 
 public class MainActivity extends AppCompatActivity {
-    Vector<String> un = new Vector<>();
-    Vector<String> pw = new Vector<>();
+    JSONObject intent_data = new JSONObject();
+
+    Vector<String> username_vector = new Vector<>();
+    Vector<String> password_vector = new Vector<>();
+
     String disp = "";
 
     @Override
@@ -31,54 +39,82 @@ public class MainActivity extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void submit_clicked(View view) {
 
-        String un = ((EditText)findViewById(R.id.userName)).getText().toString();
-        System.out.println("un 1 " + un);
-        String pw = ((EditText)findViewById(R.id.pw_id)).getText().toString();
+        String username = ((EditText)findViewById(R.id.userName)).getText().toString();
+        String password = ((EditText)findViewById(R.id.pw_id)).getText().toString();
         String st = "Invalid Username / Password";
 
-
-
-
-        if (un.equals("")) { // invalid username
+        //ERROR HANDLING =============================================
+        if (username.equals("")) {
 //            Toast.makeText(this,  "Enter valid username",Toast.LENGTH_LONG).show();
             ((TextView)findViewById(R.id.id_submit_text)).setText(st);
+            Log.e("SignInError", "Invalid Username");
 
             return;
         }
-        if (pw.equals("")) {
+        if (password.equals("")) {
 //            Toast.makeText(this,  "Enter valid password",Toast.LENGTH_LONG).show();
             ((TextView)findViewById(R.id.id_submit_text)).setText(st);
+            Log.e("SignInError", "Invalid Password");
             return;
         }
-        ((TextView)findViewById(R.id.id_submit_text)).setText("Data accepted");
+//        ((TextView)findViewById(R.id.id_submit_text)).setText("Data accepted");
 
-        this.un.add(un); // store these for attack demo
-        this.pw.add(pw); // store these for attack demo
-        disp += un + "    " + pw + "\n";
+        setIntentData(username, password);
+
+        // COMPLETE (!! DO WE NEED THIS?)=============================================
+//        disp += username + "    " + password + "\n";
 
         ((EditText)findViewById(R.id.userName)).setText("");
         ((EditText)findViewById(R.id.pw_id)).setText((""));
 //        ((EditText)findViewById(R.id.disp_id)).setText(disp);
 
-        System.out.println("stored: " + un + "\t" + pw);
+        System.out.println("stored: " + username + "\t" + password);
 //        Toast.makeText(this,  "System is currently down, please try again soon",Toast.LENGTH_LONG).show();
 
-    } // end submit_clicked
+    }
 
+    public void setIntentData(String username, String password) {
+        //STORE INTENT DATA =============================================
+
+        //VECTORS
+        this.username_vector.add(username); // store these for attack demo
+        this.password_vector.add(password); // store these for attack demo
+
+        //JSON
+        try{
+            this.intent_data.put("username", username);
+            this.intent_data.put("password", password);
+        }
+        catch (JSONException e) {
+            Log.i("Error", "JSON Exception");
+        }
+    }
 
     public void butt_intent(View view) {
 
-        // Create the text message with a string.
+        setIntentData(((EditText)findViewById(R.id.userName)).getText().toString(), ((EditText)findViewById(R.id.pw_id)).getText().toString());
+
         Intent sendIntent = new Intent("com.example.normalapp2.LOGIN");
-        System.out.println(this.un);
-        sendIntent.putExtra("info", this.un.toString()); // sends username
-        System.out.println(sendIntent.getExtras());
-        // invoke the intent.
+
+        // MIGITGATION TECHNIQUE ==========================================
+        //ENCYRPTION
+//        sendIntent.putExtra("vectorinfo_username", this.username_vector.get(0)); // sends username
+//        sendIntent.putExtra("vectorinfo_password", this.username_vector.get(0)); // sends username
+//        sendIntent.putExtra("jsoninfo", this.intent_data.toString()); // sends username
+
+        // MIGITGATION TECHNIQUE ==========================================
+
+        // ORIGINAL TECHNIQUE ==========================================
+        sendIntent.putExtra("vectorinfo_username", this.username_vector.get(0)); // sends username
+        sendIntent.putExtra("vectorinfo_password", this.username_vector.get(0)); // sends username
+        sendIntent.putExtra("jsoninfo", this.intent_data.toString()); // sends username
+        // ORIGINAL TECHNIQUE ==========================================
+
+        Log.i("SendIntent", sendIntent.getExtras().toString());
+
+        // invoke the intent
         try {
             startActivity(sendIntent);
-        } catch (ActivityNotFoundException e) {
-            System.out.println("*****Error w intent");
-            // Define what your app should do if no activity can handle the intent.
-        }
+        } catch (ActivityNotFoundException e) { System.out.println("There was a problem sending this intent."); }
     }
-} // end class
+}
