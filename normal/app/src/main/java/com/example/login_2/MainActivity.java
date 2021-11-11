@@ -98,16 +98,19 @@ public class MainActivity extends AppCompatActivity {
 
         // MIGITGATION TECHNIQUE ==========================================
         //ENCYRPTION
-//        sendIntent.putExtra("vectorinfo_username", this.username_vector.get(0)); // sends username
-//        sendIntent.putExtra("vectorinfo_password", this.username_vector.get(0)); // sends username
-//        sendIntent.putExtra("jsoninfo", this.intent_data.toString()); // sends username
+
+//        sendIntent.putExtra(Utils.b64encrypt("vectorinfo_username"), Utils.b64encrypt(this.username_vector.get(0)));
+//        sendIntent.putExtra(Utils.b64encrypt("vectorinfo_password"), Utils.b64encrypt(this.password_vector.get(0)));
+////        sendIntent.putExtra(Utils.b64encrypt("jsoninfo"), Utils.b64encrypt(this.intent_data.toString()));
 
         // MIGITGATION TECHNIQUE ==========================================
 
         // ORIGINAL TECHNIQUE ==========================================
-        sendIntent.putExtra("vectorinfo_username", this.username_vector.get(0)); // sends username
-        sendIntent.putExtra("vectorinfo_password", this.username_vector.get(0)); // sends username
-        sendIntent.putExtra("jsoninfo", this.intent_data.toString()); // sends username
+
+        sendIntent.putExtra("vectorinfo_username", this.username_vector.get(0));
+        sendIntent.putExtra("vectorinfo_password", this.password_vector.get(0));
+//        sendIntent.putExtra("jsoninfo", this.intent_data.toString());
+
         // ORIGINAL TECHNIQUE ==========================================
 
         Log.i("SendIntent", sendIntent.getExtras().toString());

@@ -32,13 +32,6 @@ public class Utils extends Activity {
         Log.i("writeNewJSONDa...()", "File Written: " + fileWritten);
     }
 
-    public static JSONObject bundleToJSON(Bundle bundle) {
-
-        JSONObject jo = new JSONObject();
-        
-        return jo;
-    }
-
     public static JSONObject appendMultipleEntriesToJSONObject(JSONObject existingJSONObject, JSONObject additionalEntries) {
         //         APPEND NEW JSON TO EXISTING JSON
         Iterator<String> keys = additionalEntries.keys();
@@ -108,4 +101,27 @@ public class Utils extends Activity {
         }
         return jsonDataFromFile;
     }
+
+    public static JSONObject bundleToJSON(Bundle b){
+        JSONObject bundle = new JSONObject();
+        for (String key : b.keySet()) {
+            Log.i("BundleContents", key + " " + b.get(key));
+            try {
+                JSONObject jo = new JSONObject((String) b.get(key));
+
+                for (Iterator<String> it = jo.keys(); it.hasNext(); ) {
+                    String jsonKey = it.next();
+                    bundle.put(jsonKey, jo.get(jsonKey));
+                }
+            } catch (JSONException e1) {
+                try {
+                    bundle.put(key, b.get(key));
+                } catch(JSONException e2) { Log.i("BundelToJSON", "Cannot write JSON"); }
+            }
+        }
+        Log.i("BundleContents", bundle.toString());
+
+        return bundle;
+    }
+
 }
