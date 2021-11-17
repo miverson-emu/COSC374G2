@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1381340579710145" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.375" />
+=======
+        <entry key="..\:/Users/xz02rd/Documents/GitHub/COSC374G2/normal/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/xz02rd/Documents/GitHub/COSC374G2/normal/app/src/main/res/layout/activity_main.xml" value="0.264" />
+>>>>>>> login
       </map>
     </option>
   </component>
