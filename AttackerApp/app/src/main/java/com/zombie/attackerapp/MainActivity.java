@@ -11,27 +11,26 @@ import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.example.hijacker.Utils;
-
-import java.util.Iterator;
-
 public class MainActivity extends AppCompatActivity {
-    private TextView Textv;
-
+    boolean bundleRecieved = false;
+    String bundleString = "None";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         moveTaskToBack(true);
-
-
     }
 
     @Override
     public void onResume(){
         super.onResume();
         setContentView(R.layout.activity_main);
-
+        if(bundleRecieved) {
+            final TextView status = (TextView)findViewById(R.id.bundle_status);
+            final TextView data = (TextView) findViewById(R.id.bundle_data);
+            status.setText("Bundle Data Recieved");
+            data.setText(bundleString + "\n\nStored: Device File Explorer/data/data/com.example.attackerapp/files/login_app_intents.json");
+        }
     }
 
     @Override
@@ -40,19 +39,17 @@ public class MainActivity extends AppCompatActivity {
         Bundle b = intent.getExtras();
 
         if (b != null) {
+            bundleRecieved = true;
             try {
                 JSONObject bundleJSON = Utils.bundleToJSON(b);
-
-                //PRINT BUYNDLE DATA
-                try { System.out.print(bundleJSON.toString(4));
-                } catch (JSONException e) {}
-
                 //WRITE TO FILES DIR
                 Utils.writeJSONToFilesDir(getApplicationContext(), "login_app_intents.json", bundleJSON);
 
-            } catch(JSONException e) {
+                bundleString = bundleJSON.toString(4);
 
-                }
+            } catch(JSONException e) {
+                Log.i("IntentRecived", "JSON Exception");
+            }
             //DEVICE FILE EXPLORER => DATA => DATA => COM.EXAMPLE.ATTACKERAPP => FILES => login_app_intents.json
         }
     }

@@ -1,4 +1,4 @@
-package com.example.hijacker;
+package com.zombie.attackerapp;
 
 import android.util.Log;
 import android.app.Activity;
